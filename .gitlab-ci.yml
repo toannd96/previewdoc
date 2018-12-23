@@ -1,5 +1,0 @@
-deploy:
-  only:
-    - master
-  script:
-    - cd /data/DEV-SERVER/;/opt/run_ansible.sh "/data/DEV-SERVER/docx_to_pdf.yml -i /data/DEV-SERVER/hosts -e @group_vars/password.yml"
