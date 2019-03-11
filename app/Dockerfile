@@ -6,10 +6,10 @@ RUN apt-get update -y && \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
-ADD . /doc-to-pdf
+ADD . /conv
 
-WORKDIR /doc-to-pdf
+WORKDIR /conv
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:5000 app:serve
+ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:5000 app:server

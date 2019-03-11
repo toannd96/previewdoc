@@ -19,20 +19,17 @@ def create_app():
     app = Flask(__name__)
 
     # Get env
-    env = os.environ.get('FLASK_ENV', 'development')
+    env = os.environ.get("FLASK_ENV", "development")
     app.config.from_object(config[env])
-    app.add_url_rule(
-        '/uploads', 'uploads', upload_file, methods=['POST', 'GET'])
+    app.add_url_rule("/uploads", "uploads", upload_file, methods=["POST", "GET"])
 
     app.add_url_rule(
-        '/download/<string:filename>',
-        'download',
-        download_file,
-        methods=['GET'])
+        "/download/<string:filename>", "download", download_file, methods=["GET"]
+    )
     return app
 
 
-serve = create_app()
+server = create_app()
 
-if __name__ == '__main__':
-    serve.run()
+if __name__ == "__main__":
+    server.run()

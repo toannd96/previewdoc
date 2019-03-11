@@ -1,10 +1,10 @@
 version: '3'
 
 services:
-    doc-to-pdf:
+    conv:
         build: .
         volumes:
-            - ./doc-to-pdf/upload:/doc-to-pdf/upload
-            - ./doc-to-pdf/convert:/doc-to-pdf/convert
+            - ./conv/upload:/conv/upload
+            - ./conv/convert:/conv/convert
         ports:
             - '5000:5000'
