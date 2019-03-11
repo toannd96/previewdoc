@@ -1,26 +1,21 @@
-# Upload and Download file 
+# Ứng dụng web chuyển đổi các định dạng office 
 
-API upload file and download file converted to pdf 
-
-# Cài đặt môi trường development
+## Cài đặt môi trường development
 
 Requirements:
 - Python 2.7
-- Pip, Virtualenv, flask, urlparse
-- gunicorn
-- unoconv
 
 - Trên Ubuntu
 
 ```
-apt install unoconv libreoffice-script-provider-python
+sudo apt install unoconv libreoffice-script-provider-python
 ```
 
 Khai báo báo env mới:
 
 ```
-virtualenv .upload_env
-source .upload_env/bin/activate
+virtualenv convert_env
+source convert_env/bin/activate
 ```
 
 Cài các gói pip:
@@ -29,13 +24,7 @@ Cài các gói pip:
 pip install -r requirements.txt
 ```
 
-Khai báo File cấu hình:
-
-```
-cp app.yaml.example app.yaml
-```
-
-Sửa các giá trị trong file `app.yaml` theo đúng cấu hình cài đặt.
+Sửa các giá trị trong file `app.yaml` theo cấu hình cài đặt.
 
 
 Run app ở chế độ `Development`:
@@ -46,22 +35,43 @@ python app.py
 
 App được chạy ở port 5000.
 
-# Cài đặt môi trường docker 
+## Cài đặt môi trường docker 
 
 > Đảm bảo docker đã được cài đặt thành công.
 
 Build image từ Dockerfile đã tạo:
 
 ```
-sudo docker build -t doc-to-pdf .
+sudo docker build -t conv .
 ```
 
-
-
-
 Build và run ứng dụng với docker-compose:
+
+> Đảm bảo docker-compose đã được cài đặt thành công.
 
 ```
 sudo docker-compose up
 ```
 
+## Cách thức hoạt động:
+
+GET:
+
+- Get file from URL param
+- Download file to folder upload
+- Convert file to folder convert 
+- Return view converted file on the browser
+
+```
+http://0.0.0.0:5000/uploads?file=http://home.actvn.edu.vn/Upload/document/don-hoan-thi.docx
+```
+
+POST:
+
+- Get file upload via payload
+- Download file to folder upload
+- Convert file to folder convert 
+
+``` 
+Body: form-data key:file (Postman)
+```
