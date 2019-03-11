@@ -24,6 +24,15 @@ pip install -r requirements.txt
 
 Sửa các giá trị trong file `app.yaml` theo cấu hình cài đặt.
 
+Test app:
+
+```
+python test_resources.py
+----------------------------------------------------------------------
+Ran 3 tests in 1.068s
+
+OK
+```
 
 Run app ở chế độ `Development`:
 
