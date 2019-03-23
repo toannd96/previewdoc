@@ -16,7 +16,7 @@ virtualenv convert_env
 source convert_env/bin/activate
 ```
 
-Cài các gói pip:
+Cài các gói phụ thuộc:
 
 ```
 pip install -r requirements.txt
